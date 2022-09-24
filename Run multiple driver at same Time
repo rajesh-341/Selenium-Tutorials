@@ -1,0 +1,24 @@
+package Something;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class BothDriverAtSameTime {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver", "./drivers/geckodriver.exe");
+		WebDriver driver1 = new FirefoxDriver();
+		
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+		WebDriver driver2 = new ChromeDriver();
+		
+		driver1.get("https://mail.google.com/mail/u/0/#inbox");
+		driver1.manage().window().maximize();
+		String str1 = driver1.getTitle();
+		System.out.println(str1+driver1);
+		driver2.get("https://mail.google.com/mail/u/0/#inbox");
+		String str2 = driver2.getTitle();
+		System.out.println(str2+""+driver2);
+	}
+}
